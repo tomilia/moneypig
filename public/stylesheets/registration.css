@@ -1,0 +1,181 @@
+body{
+	background-image:url("../image/background.png");
+	background-repeat: no-repeat;
+}
+@font-face{
+	font-family: prestijdemo_regular;
+	src: url(Prestij_Regular_Demo.otf);
+}
+@font-face{
+	font-family: prestij_bold;
+	src: url(Prestij_Bold_Demo.otf);
+}
+.allinform{
+    position: absolute;
+    margin-left: 30%;
+    margin-top: 0%;
+    display: block;
+}
+.form {
+    height: 90%;
+    width: 50%;
+	position:relative;
+	display: block;
+	margin-left:0%;
+}
+.reg {
+    font-family: prestijdemo_regular;
+    font-size:55px;
+    position: absolute;
+    display: block;
+    color: #ff4d4d;
+    margin-left: 65%;
+    margin-top: -220%;
+}
+select {
+    border:1px solid #999;
+    outline : none;
+    overflow : hidden;
+    text-indent : 0.01px;
+    text-overflow :'';
+    background : url("https://cdn2.iconfinder.com/data/icons/picol-vector/32/arrow_sans_down-16.png") no-repeat right 2px center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    width:80px;//You can use custom dimension
+}
+select:-moz-focusring { color: transparent;
+                        text-shadow: 0 0 0 #000; }
+select :: -ms-expand {
+    display: none;
+}
+.all{
+	font-family:prestijdemo_regular;
+	position:absolute;
+	display: block;
+	margin-left: 25%;
+	margin-top:  -200%;
+    font-size: 30px;
+    width:180px;
+}
+.all input{
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	padding-left: 5%;
+    padding-right: 10%;
+	padding-top:  0%;
+    width:190px;
+    height:50px;
+    font-size: 3vh;
+	background-color: transparent;
+}
+.all_email input{
+    width:290px;
+}
+.empty_block{
+	position:absolute;
+	display: block;
+	margin-left:65%;
+	margin-top:-95%;
+	height:15%;
+	width: 20%;
+	border-style: dashed;
+	border-color: gray;
+	border-radius: 20px;
+}
+.tosign{
+    position:absolute;
+    width: 50%;
+    margin-top: -72%;
+    margin-left: 80%;
+}
+.toleft{
+	position:relative;
+	display: inline;
+    margin-left: -40%;
+}
+.toright{
+	position:relative;
+	display: inline;
+}
+.the_selection{
+    font-family:prestijdemo_regular;
+    position: absolute;
+    display: block;
+    margin-top: -65%;
+    margin-left: 65%;
+    font-size:30px;
+}
+.gender{
+	position:absolute;
+	display: block;
+}
+.gendersel{
+	position:relative;
+	display: block;
+}
+.gendersel select{
+    position:relative;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+    height: 40px;
+	width: 120px;
+	background-color: transparent;
+	font-size : 20px;
+    margin-left:0%;
+    margin-top: 30%;
+}
+.college{
+	position:absolute;
+	display: block;
+}
+.collegesel{
+	position:absolute;
+	display: block;
+}
+.collegesel select{
+    position:relative;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+    height: 40px;
+	width: 120px;
+	background-color: transparent;
+	font-size : 20px;
+    margin-left:0%;
+    margin-top: 34%;
+}
+.submit{
+	position:absolute;
+	display: block;
+    height:100px;
+    width:200px;
+	margin-left:65%;
+	margin-top:-35%;
+	border: transparent;
+	background-color:transparent;
+
+}
+.submitbutton{
+    height: 100px;
+    width:150px;
+	background-color: transparent;
+    background-image:url("../image/submit-original.png");
+    background-size:contain;
+	border: None;
+    background-repeat: no-repeat;
+			cursor:pointer;
+}
+.submitbutton:hover{
+    height: 100px;
+    width:150px;
+	background-color: transparent;
+	background-image: url("../image/submit-after.png");
+    background-size:contain;
+    border: None;
+    background-repeat: no-repeat;
+}

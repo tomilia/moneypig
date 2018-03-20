@@ -1,0 +1,83 @@
+<html>
+<head lang="en">
+	<title>New member</title>
+	<script
+			  src="https://code.jquery.com/jquery-3.3.1.js">
+			</script>
+	<link href = "stylesheets/registration.css" rel = "stylesheet" type ="text/css">
+</head>
+
+<body>
+<div class = "allinform">
+    <div class = "form" >
+     <img src = "image/form.png" style = "width : 600px; height: 800px; border:0;">
+        <div class = "reg">Register</div>
+        <form method = "POST" action="/registration" id="regAction">
+        <div class = "all">
+            Username:
+            <div>
+            <input type="text" name="name" height = "50">
+            </div>
+            Password:
+            <div>
+            <input type="password" name="password">
+            </div>
+            SID:
+            <div>
+            <input type="text" name="sid">
+            </div>
+            First Name:*
+            <div>
+            <input type="text" name="firstname">
+            </div>
+            Last Name:*
+            <div>
+            <input type="text" name="lastname">
+            </div>
+            Email:
+            <div class = "all_email"><input type="text" name="email"></div>
+        </div>
+    </div>
+    <div class = "empty_block"></div>
+    <div class = "tosign">
+        <div class = "toright" ><img src = "image/arrow-r.png" width="30" height ="30">
+        </div>
+        <div class = "toleft" ><img src = "image/form-L.png" width="30" height ="30"></div>
+    </div>
+    <div class = "the_selection">
+        <div class = "gender">Gender:*</div>
+        <div class = "gendersel">
+            <select class ="Sex" name = "gender">
+                <option>Sex</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+        </div>
+        <div class = "college">College:*</div>
+        <div class = "collegesel">
+            <select /*id ="college1"*/ name ="college">
+                <option>College</option>
+                <option value="CC">CC</option>
+                <option value="NA">NA</option>
+                <option value="UC">UC</option>
+                <option value="MS">MS</option>
+                <option value="SH">SH</option>
+                <option value="CW">CW</option>
+                <option value="YS">YS</option>
+                <option value="SC">SHAW</option>
+                <option value="WS">LWS</option>
+            </select>
+        </div>
+    </div>
+    <div class = "submit">
+	   <button type = "submit" name = "submit" id="submit" class = "submitbutton"></button>
+    </div>
+</div>
+
+</body>
+<script>
+$(document).ready(function  () {
+
+});
+</script>
+</html>

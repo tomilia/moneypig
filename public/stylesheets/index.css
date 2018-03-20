@@ -1,0 +1,84 @@
+body{
+	background-image:url("../image/background.png");
+	background-repeat: no-repeat;
+	margin-left: 100px;
+}
+@font-face{
+	font-family: prestijdemo_regular;
+	src: url(Prestij_Regular_Demo.otf);
+}
+@font-face{
+	font-family: prestij_bold;
+	src: url(Prestij_Bold_Demo.otf);
+}
+.allinhome{
+    position:absolute;
+    margin-left: 40%;
+    margin-top: 10%;
+    display:block;
+}
+.registation{
+	position:relative;
+	display: block;
+	margin-left:-80%;
+	margin-top:-20%;
+    float: none;
+}
+.pig {
+    position: absolute;
+	display: block;
+	margin-top:-30%;
+    float: none;
+}
+.moneypointer{
+    position: absolute;
+	display: block;
+    margin-left: 50%;
+    margin-top: -65%;
+}
+.inputs{
+    font-family:prestij_bold;
+	font-size:15px;
+    position:absolute;
+    margin-left:25%;
+    margin-top:-60%;
+}
+
+.inputs input{
+	border-radius: 50px;
+	padding-left: 5%;
+    height: 25px;
+    width: 200px;
+	background-color: #CD5C5C;
+    font-size:20px;
+}
+.loginposition{
+    position:absolute;
+    margin-left: 43%;
+    margin-top: -34%;
+}
+.login_button{
+    height:30px;
+    width:80px;
+    background-image:url("../image/loginbut.png");
+    background-size: contain;
+    background-color: transparent;
+    border: None;
+    background-repeat: no-repeat;
+}
+.forgot_but{
+	display: inline;
+}
+.forgotdiv{
+	font-family:prestijdemo_regular;
+	font-size:15px;
+	display: inline;
+}
+.forgot_all{
+    position: absolute;
+    margin-left: 34%;
+    margin-top: -26%;
+}
+.forgotdiv a:hover{
+	color: yellow;
+}
