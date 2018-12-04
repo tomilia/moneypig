@@ -1,0 +1,92 @@
+<div id="myModal" class="modal">
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <div class="container">
+  <form method = "POST" action="/add" id="resetAction">
+
+    <div class="form-group">
+      <label for="date0">Date:</label>
+      <input type="date" class="form-control" name="datea0" id="date0" required>
+    </div>
+
+
+<br>
+
+<select name="categorya0" class="form-control form-control-sm" required>
+<option value="">Category</option>
+<option value="food">food</option>
+<option value="drink">drink</option>
+<option value="item">item</option>
+<option value="other">other</option>
+</select>
+<br>
+<select name="payment_methoda0" class="form-control form-control-sm" required>
+<option value="">Payment method</option>
+<option value="cash">cash</option>
+<option value="credit card">credit card</option>
+<option value="octopus card">octopus card</option>
+</select>
+<br>
+<select name="shopnamea0" class="form-control form-control-sm" required>
+<option value="">Shop Name</option>
+<option value="cccan">CC can</option>
+<option value="uccan">UC can</option>
+<option value="nacan">NA can</option>
+<option value="shawcan">Shaw can</option>
+<option value="other">Other</option>
+</select>
+<br>
+
+  <div class="form-group">
+  <label for="formGroupExampleInput2">Product Name</label>
+  <input type="text" class="form-control" name="productnamea0" placeholder="e.g. apple" required>
+  </div>
+  <div class="form-group">
+  <label for="formGroupExampleInput2">Qty</label>
+  <input type="number" class="form-control" name="qtya0" placeholder="e.g. 1" required>
+  </div>
+  <div class="form-group">
+  <label for="formGroupExampleInput2">Price</label>
+  <input type="number" class="form-control" name="pricea0" placeholder="e.g. 10" required>
+  </div>
+  <div class="form-group row">
+       <div class=" col-sm-2">
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+  <button type="reset" id="reset" class="btn btn-primary">Clear</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+<script>
+$('#reset').click(function(){
+  $('#resetAction')[0].reset();
+});
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("addRecord");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>

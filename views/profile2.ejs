@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script>
+  //this is copy form homepage.ejs mylam
+      function startTime() {
+          var today = new Date();
+          var hr = today.getHours();
+          var min = today.getMinutes();
+          var sec = today.getSeconds();
+          ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+          hr = (hr == 0) ? 12 : hr;
+          hr = (hr > 12) ? hr - 12 : hr;
+          //Add a zero in front of numbers<10
+          hr = checkTime(hr);
+          min = checkTime(min);
+          sec = checkTime(sec);
+          document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
+
+          var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          var curWeekDay = days[today.getDay()];
+          var curDay = today.getDate();
+          var curMonth = months[today.getMonth()];
+          var curYear = today.getFullYear();
+          var date = curWeekDay+","+curDay+""+curMonth;
+          document.getElementById("date").innerHTML = date;
+          document.getElementById("month").innerHTML = curMonth;
+
+          var time = setTimeout(function(){ startTime() }, 600);
+      }
+      function checkTime(i) {
+          if (i < 10) {
+              i = "0" + i;
+          }
+          return i;
+      }
+//end of homepage.ejs copy mylam
+   // Remove menu for searching
+      </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+div {
+    margin-bottom: 15px;
+    padding: 4px 12px;
+}
+
+.danger {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+}
+
+.success {
+    background-color: #ddffdd;
+    border-left: 6px solid #4CAF50;
+}
+
+.info {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+}
+
+
+.warning {
+    background-color: #ffffcc;
+    border-left: 6px solid #ffeb3b;
+}
+</style>
+<p id="demo"></p>
+
+</head>
+<h3>Profile</h3>
+
+<body>
+	<div class="container">
+  <div class="row">  
+    <div class="col-8"> 
+    <form method = "POST" action="/profile2" id="resetAction">   
+     Username <%= name %><br>
+     <h1>Change Password</h1><hr>
+    Old Password <input type="password" name="password0"><br><br>
+    New Passward <input type="password" name="password1"><br><br>
+    Confirm Passward <input type="password" name="password2"><br><br>
+
+    <h1>Change Email</h1><hr>
+    Email <%= email %><br><br>
+    New Email <input type="email" name="email1"><br><br>
+    Confirm Email <input type="email" name="email2"><br>
+
+    </div>
+    <div class="col-4">
+      password now for reference:<%= password%><br>
+       <button type="button">Personal Information</button>
+       <br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <button type="reset" name="reset">Reset</button>
+      <button type="submit" name="save">Save</button>
+    </div>
+        </form>
+    </div>
+</body>
+</html>

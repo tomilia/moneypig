@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <link href="../stylesheets/homepage.css" rel="stylesheet">
+  <link href="../stylesheets/navbar.css" rel="stylesheet">
+  <script>
+      function startTime() {
+          var today = new Date();
+          var hr = today.getHours();
+          var min = today.getMinutes();
+          var sec = today.getSeconds();
+          ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+          hr = (hr == 0) ? 12 : hr;
+          hr = (hr > 12) ? hr - 12 : hr;
+          //Add a zero in front of numbers<10
+          hr = checkTime(hr);
+          min = checkTime(min);
+          sec = checkTime(sec);
+          document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
+
+          var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          var curWeekDay = days[today.getDay()];
+          var curDay = today.getDate();
+          var curMonth = months[today.getMonth()];
+          var curYear = today.getFullYear();
+          var date = curWeekDay+","+curDay+""+curMonth;
+          document.getElementById("date").innerHTML = date;
+
+          var time = setTimeout(function(){ startTime() }, 500);
+      }
+      function checkTime(i) {
+          if (i < 10) {
+              i = "0" + i;
+          }
+          return i;
+      }
+
+   // Remove menu for searching
+      </script>
+
+<style>
+input{
+    max-width:100%;
+}
+/* The Modal (background) */
+
+body{
+  background-color: #696969;
+}
+
+</style>
+
+
+
+
+</head>
+<body onload="startTime()">
+
+  <%- include navbar.ejs %>
+
+  <div style = "background-color:#cccccc; height:650px; width:100%;">
+    <div class="container main" >
+      <% if(successfulMessage.length>0){ %>
+        <div class="alert alert-success"><%= successfulMessage %></div>
+        <%}%>
+        <% if(failMessage.length>0){ %>
+          <div class="alert alert-danger"><%= failMessage %></div>
+          <%}%>
+      <div class = "row" style = "border-bottom:0.5px solid #696969; background-color:#ffffff;margin-left:-40px;margin-right:-120px;">
+        <div class = "col-2 page-title" >
+          <h1 style="margin-left:35px;">Home</h1>
+        </div>
+      </div>
+
+  <div class="row" style = "margin-top:50px;">
+    <div class="col-sm"style = "margin-top:-25px;">
+      <div class = "fix">
+
+<div class="card mb-3">
+  <div class="card-header" style="color:#f69590">Welcome to <img src="../image/icons.png" style="height:35px;width:115px;"></div>
+  <div class="card-body text-dark">
+    <p class="card-text" style="font-size:45px;line-height:80%">Summary of</p>
+    <p class="card-text monthget2" style="font-size:50px;font-family:GinraSemi;line-height:50%;color:#fd7e54"></p>
+    <p class="card-text" style="font-size:41px">Total Expense</p>
+    <p class="card-text" style="font-size:5em;line-height: 30%;color:#6995f2">$ <%= total %></p>
+    <p class="card-text" style="font-size:41px">out of $ <%= user.budget %></p>
+  </div>
+</div>
+        </div>
+    </div>
+    <div class="col-sm" >
+      <div class = "fix" style = "margin-top:-25px;">
+
+      <div class="card mb-3">
+      <div class="card-header"  style="background-color:#6d6d6d">Most Type of Spending</div>
+        <div class="card-body text-dark" >
+          <div id="piechart" ></div>
+        </div>
+
+
+      <script type="text/javascript">
+      // Load google charts
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      var food = <%= food %>,drink = <%= drink %>, item = <%= item %>, other = <%= other %>;
+      // Draw the chart and set the chart values
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['expense', 'total amount'],['Food', food],['Drink', drink],
+        ['Item', item],['Other', other]]);
+        // Optional; add a title and set the width and height of the chart
+        var options = {'width': 300 , 'height':280, pieHole: 0.5,'chartArea':{'top':14,'height':240,'width':240},'legend': {'position': 'bottom'}};
+        // Display the chart inside the <div> element with id="piechart"
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+      </script>
+    </div>
+      </div>
+</div>
+
+    <div class="col-sm">
+<div class = "fix" style = "margin-top:-25px;">
+
+<div class="card border-light mb-3">
+  <div class="card-header" style="background-color:#3e583f">Most Frequently Visit Shop</div>
+  <div class="card-body text-dark">
+
+  <div>&nbsp;</div>
+
+  <div id="chartContainer" style="height: 300px; width: 100%;">
+  </div>
+  <script type="text/javascript">
+  window.onload = function () {
+    CanvasJS.addColorSet("greenShades",
+        [//colorSet Array
+        "#2F4F4F",
+        "#008080",
+        "#2E8B57",
+        "#3CB371",
+        "#90EE90"
+        ]);
+    var cccan = <%= cccan %>,uccan = <%= uccan %>,nacan = <%= nacan %>,shawcan = <%= shawcan %>,othershop = <%= othershop %>;
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      colorSet:"greenShades",
+      data: [
+      { type: "bar",
+        dataPoints: [
+        { y: othershop, label: "Other"},
+        { y: shawcan, label: "Shawcan"},
+        { y: nacan, label: "NAcan"},
+        { y: uccan, label: "UCcan"},
+        { y: cccan, label: "CCcan"}]}]});
+  chart.render();
+}
+  </script>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+
+  <div class = "fakerow2">
+  <div class = "row" style="margin-top:1%;">
+    <div class = "col-sm" >
+
+      <div class = "fix" >
+          <div class="card mb-3">
+  <div class="card-header" style="background-color:#fd7e54">Payment Method</div>
+  <div class="card-body text-dark">
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item" >
+        <div class = "row">
+
+        <div class = "col-sm"><img src ="../image/RyderDesign/Indexdesign/list/box_cash.png" height = "60" width = "100" >
+        </div>
+        <div class = "col-sm" style ="font-size:50px;font-family:simpleprint">$<%=cash%> </div>
+
+                </div>
+              </li>
+    <li class="list-group-item" ><div class="row"><div class = "col-sm"><img src ="../image/RyderDesign/Indexdesign/list/box_8.png" height = "60" width = "100" >
+    </div>
+  <div class = "col-sm" style ="font-size:50px;font-family:simpleprint">$<%=octopus%></div></div></li>
+    <li class="list-group-item"><div class="row"><div class = "col-sm"><img src ="../image/RyderDesign/Indexdesign/list/box_ccard.png" height = "60" width = "100" >
+    </div>
+  <div class = "col-sm" style ="font-size:50px;font-family:simpleprint">$<%=credit%></div></div></li>
+</ul>
+
+    </div>
+  </div>
+   </div>
+</div>
+
+
+    <div class = "col-sm-8">
+      <div class = "fix">
+        <div class="card mb-3">
+  <div class="card-header" style="background-color:#67f9c9">Weekly Usage</div>
+  <div class="card-body text-dark">
+
+
+ <div id="linechartContainer" style="height: 180px; width: 100%;"></div>
+
+<script>
+var week = [<%=week[0]%>, <%=week[1]%>, <%=week[2]%>, <%=week[3]%>, <%=week[4]%>];
+  var small = week[0], big = week[0], i = 0;
+  for(; i < week.length; i++){
+    if(week[i]>big)
+      big = week[i];
+    if(week[i]<small)
+      small = week[i];
+  }
+var chart = new CanvasJS.Chart("linechartContainer", {
+  animationEnabled: true,
+  theme: "light2",
+  axisY:{
+    includeZero: true
+  },
+  data: [{
+    type: "line",
+    dataPoints: [
+          //mylam don't know how to indicate big and small
+          //indexLabel: "highest",markerColor: "red", markerType: "triangle" },
+          //indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
+      { y: week[0] },
+      { y: week[1] },
+      { y: week[2] },
+      { y: week[3] },
+      { y: week[4] }
+    ]
+  }]
+});
+
+function maxIndexLabel() {
+      var length = chart.options.data[0].dataPoints.length;
+      for( i = 0; i < length; i++ ) {
+
+        if( chart.options.data[0].dataPoints[i].y == big) {
+            chart.options.data[0].dataPoints[i].indexLabel = "highest";
+          chart.options.data[0].dataPoints[i].markerColor="red";
+         // chart.options.data[0].dataPoints[i].markerType: "triangle";
+        }
+        else if( chart.options.data[0].dataPoints[i].y == small) {
+            chart.options.data[0].dataPoints[i].indexLabel = "lowest";
+          chart.options.data[0].dataPoints[i].markerColor="DarkSlateGrey";
+           //chart.options.data[0].dataPoints[i].markerType: "cross";
+        }
+          chart.options.data[0].dataPoints[i].indexLabel =  chart.options.data[0].dataPoints[i].indexLabel;
+      }
+
+}
+    maxIndexLabel();
+chart.render();
+
+
+</script>
+
+
+</div>
+</div>
+
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- The Modal -->
+
+
+  <!-- Modal content -->
+
+
+
+
+
+
+</body>
+
+</html>

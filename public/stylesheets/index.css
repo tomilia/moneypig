@@ -3,17 +3,22 @@ body{
 	background-repeat: no-repeat;
 	margin-left: 100px;
 }
-@font-face{
-	font-family: prestijdemo_regular;
-	src: url(Prestij_Regular_Demo.otf);
+@font-face {
+		font-family: prestij_reg;
+    src: url("../font/Prestij_Regular_Demo.otf");
+
 }
-@font-face{
-	font-family: prestij_bold;
-	src: url(Prestij_Bold_Demo.otf);
+@font-face {
+		font-family: prestij_bold;
+    src: url("../font/Prestij_Bold_Demo.otf");
+}
+input, select, textarea{
+	font-family: prestij_reg;
+    color: #674d3b;
 }
 .allinhome{
     position:absolute;
-    margin-left: 40%;
+    margin-left: 30%;
     margin-top: 10%;
     display:block;
 }
@@ -39,6 +44,7 @@ body{
 .inputs{
     font-family:prestij_bold;
 	font-size:15px;
+	color:#726060;
     position:absolute;
     margin-left:25%;
     margin-top:-60%;
@@ -52,9 +58,12 @@ body{
 	background-color: #CD5C5C;
     font-size:20px;
 }
+input{
+
+}
 .loginposition{
     position:absolute;
-    margin-left: 43%;
+    margin-left: 40%;
     margin-top: -34%;
 }
 .login_button{
@@ -70,15 +79,50 @@ body{
 	display: inline;
 }
 .forgotdiv{
-	font-family:prestijdemo_regular;
+	font-family:prestij_reg;
 	font-size:15px;
+	color:#726060;
 	display: inline;
 }
 .forgot_all{
     position: absolute;
-    margin-left: 34%;
+    margin-left: 32%;
     margin-top: -26%;
 }
 .forgotdiv a:hover{
 	color: yellow;
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.blink{
+    animation: blink 0.7s;
+    animation-iteration-count: infinite;
+}
+.sh:hover {
+		    /* Start the shake animation and make the animation last for 0.5 seconds */
+		    animation: shake 0.5s;
+		    /* When the animation is finished, start again */
+		    animation-iteration-count: infinite;
+		}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
