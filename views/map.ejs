@@ -1,0 +1,98 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <link href="stylesheets/record.css" rel="stylesheet">
+  <link href="stylesheets/navbar.css" rel="stylesheet">
+<link href="../stylesheets/promotion.css" rel="stylesheet">
+<link href="../stylesheets/modal.css" rel="stylesheet">
+<style>
+body{
+	background-color:#cccccc;
+}
+
+   #map {
+    height: 500px;
+    width: 100%;
+   }
+/* width */
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+		width: 70%;
+		margin: auto;
+}
+</style>
+</head>
+
+<body>
+<%- include navbar.ejs%>
+<div class="container main">
+	<div class = "row" style = "border-bottom:0.5px solid #696969; background-color:#ffffff;margin-top:-18px;margin-left:-50px;margin-right:-120px;">
+		<div class = "col-2 page-title" >
+			<h1 style="margin-left:35px;">Maps</h1>
+		</div>
+	</div>
+<div class="container-fluid" style="margin-top:30px">
+  <div id="map"></div>
+  <script>
+  function initMap() {
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: {lat: 22.4212832, lng: 114.2054111}
+      });
+
+      // Create an array of alphabetical characters used to label the markers.
+      var labels = 'ABCD';
+
+      // Add some markers to the map.
+      // Note: The code uses the JavaScript Array.prototype.map() method to
+      // create an array of markers based on a given "locations" array.
+      // The map() method here has nothing to do with the Google Maps API.
+      var locations = [
+        {lat: 22.4168613, lng: 114.2093428},
+        {lat: 22.4211174, lng: 114.2083491},
+        {lat: 22.4211991, lng: 114.2062185},
+        {lat: 22.422177, lng: 114.201543}
+      ]
+      var markers = locations.map(function(location, i) {
+        return new google.maps.Marker({
+          position: location,
+          label: labels[i % labels.length]
+        });
+      });
+      var marker = new google.maps.Marker({
+      position: location,
+      title:"Hello World!"
+  });
+
+
+      // Add a marker clusterer to manage the markers.
+      var markerCluster = new MarkerClusterer(map, markers,
+          {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    }
+
+    marker.setMap(map);
+  </script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJNrlAj8BbtFvpr3zBVSJSNMnzafteMZs&callback=initMap">
+  </script>
+	<h1 style="font-family:GinraL">A: CC Can | B: NA Can | C: UC Can | D: Shaw Can</h1>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <link href="stylesheets/record.css" rel="stylesheet">
+  <link href="stylesheets/navbar.css" rel="stylesheet">
+  <link href="../stylesheets/modal.css" rel="stylesheet">
+  <script>
+      function startTime() {
+          var today = new Date();
+          var hr = today.getHours();
+          var min = today.getMinutes();
+          var sec = today.getSeconds();
+          ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+          hr = (hr == 0) ? 12 : hr;
+          hr = (hr > 12) ? hr - 12 : hr;
+          //Add a zero in front of numbers<10
+          hr = checkTime(hr);
+          min = checkTime(min);
+          sec = checkTime(sec);
+          document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
+
+          var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          var curWeekDay = days[today.getDay()];
+          var curDay = today.getDate();
+          var curMonth = months[today.getMonth()];
+          var curYear = today.getFullYear();
+          var date = curWeekDay+","+curDay+""+curMonth;
+          document.getElementById("date").innerHTML = date;
+
+          var time = setTimeout(function(){ startTime() }, 500);
+      }
+      function checkTime(i) {
+          if (i < 10) {
+              i = "0" + i;
+          }
+          return i;
+      }
+
+   // Remove menu for searching
+      </script>
+      <style>
+      #table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:450px;
+  overflow:auto;
+  margin-top:20px;
+}
+
+
+      </style>
+    </head>
+    <body onload="startTime()">
+      <%- include navbar.ejs%>
+      <div class="content-main" >
+
+    <div class = "row" style = "border-bottom:0.5px solid #696969;">
+      <div class = "col-2">
+      </div>
+      <div class = "col-2 page-title" >
+        <h1>All Records</h1>
+      </div>
+    </div>
+    <div class = "bigtable">
+
+      <div class = "row " style = "background-color:#fff; height:40px;margin-top:20px;">
+        <div class = "col-2" >
+        </div>
+        <div class = "col-4 page-title" >
+          <h2> <span id="totalrows" style="font-family:bold;"><span class="rowlen"><%=totalrows%></span></span> records</h2>
+        </div>
+      </div>
+      <div class = "row" >
+    <div class="container" id="shadow">
+
+  <!-- Content here -->
+    </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-7">
+        <div id="table-wrapper">
+          <div id="table-scroll">
+       <table class="table" id="record-table">
+      <thead class="box-title-head">
+      <th>Date</th>
+      <th>Transaction</th>
+      <th>Price</th>
+      <th>Qty</th>
+      <th>Categories</th>
+      <th>Method</th>
+      <th>Shop</th>
+      <th>Total</th>
+      </thead>
+  <tbody>
+    <div class="modifying">
+  <%for(var i = 0;i<totalrows;i++){%>
+   <tr class="col-font" style="color:#6b6b6b">
+      <th><%= date[i]%></th>
+      <td><%= transaction[i]%></td>
+      <td><%= price[i]%></td>
+      <td><%= qty[i]%></td>
+      <td><%= category[i]%></td>
+      <td><%= method[i]%></td>
+     	<td><%= shop[i]%></td>
+     	<td><%= totalR[i]%></td>
+           	<td><button type="button" class="btn btn-danger btn-circle" id="delete" data-id=<%=noadd[i]%>>X</button></td>
+    </tr>
+  <%}%>
+</div>
+  </tbody>
+  </table>
+</div>
+</div>
+      </div>
+      <div class="col-sm-2 box-title-head">
+       <div class = "collegesel">
+         <p>
+ <label for="amount">Price range: (Total)</label>
+ <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+
+<div id="slider-range" style="margin-left:5px;margin-right:10px;"></div>
+<br>
+       </div>
+   	<div class = "collegesel">
+              <select name ="category" id="cat">
+                  <option>category</option>
+                  <option value="food">food</option>
+                  <option value="drink">drink</option>
+                  <option value="item">item</option>
+                  <option value="other">other</option>
+              </select>
+       </div>
+
+        <div class = "collegesel">
+              <select name ="method" id="payment_method">
+                  <option>method</option>
+                  <option value="cash">cash</option>
+                  <option value="credit">credit card</option>
+                  <option value="octopus">octopus card</option>
+              </select>
+       </div>
+        <div class = "collegesel">
+              <select name ="shop" id="shopname">
+                  <option>shop</option>
+                  <option value="cccan">CC Can</option>
+                  <option value="nacan">NA Can</option>
+                  <option value="shawcan">Shaw Can</option>
+                  <option value="uccan">UC Can</option>
+                  <option value="other">Other</option>
+              </select>
+       </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+
+<script>
+
+$( function() {
+$( "#slider-range" ).slider({
+  range: true,
+  min: 0,
+  max: 500,
+  values: [ 0, 500 ],
+  slide: function( event, ui ) {
+
+    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+
+
+  },
+  stop:function(event,ui){
+    reloadTable();
+  }
+});
+$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+} );
+
+
+</script>
+<script>
+
+function reloadTable(){
+$.ajax({
+url: '/record?' + $.param({ "category": $("#cat").val(),"payment_method":$("#payment_method").val(),"shopname":$("#shopname").val(),"price_min":$( "#slider-range" ).slider( "values", 0 )
+,"price_max":$( "#slider-range" ).slider( "values", 1 ) }),
+method: 'POST',
+data: {
+paramInBody: 1
+},
+success: function(data) {
+            $('.rowlen').remove();
+            $('#totalrows').append("<span class='rowlen'>"+data.rows.length+"</span>");
+              $('#record-table tbody').remove();
+              $('#record-table').append("<tbody>");
+
+              for(var i = 0;i<data.rows.length;i++){
+
+                x = new Date(data.rows[i].date);
+                  x.setHours(x.getHours() - x.getTimezoneOffset() / 60);
+              $('#record-table tbody').append("<tr class='col-font' style='color:#6b6b6b'><th>"+x+"</th>"
+              +"<td>"+data.rows[i].productname+"</td>"
+              +"<td>"+data.rows[i].price+"</td>"
+              +"<td>"+data.rows[i].qty+"</td>"
+              +"<td>"+data.rows[i].category+"</td>"
+              +"<td>"+data.rows[i].payment_method+"</td>"
+              +"<td>"+data.rows[i].shopname+"</td>"
+            +"<td>"+data.rows[i].price*data.rows[i].qty+"</td>"
+
+          +"<td><button type='button' class='btn btn-danger btn-circle' id='delete' data-id='"+data.rows[i].noadd+"'>X"+"</button></td>");
+              }
+              $('#record-table').append("</tbody>");
+
+  }
+});
+}
+</script>
+<script>
+
+$(document).on('click',"button.btn-circle",function(){
+    $.ajax({
+    url: '/delete?',
+    method: 'POST',
+    data: {
+     "id": $(this).attr('data-id')
+    },
+    success: function(data) {
+      reloadTable();
+
+    }
+  });
+});
+$('select').on('change', function() {
+
+reloadTable();
+})
+</script>
+</html>

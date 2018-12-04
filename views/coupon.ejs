@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+	<link href="stylesheets/record.css" rel="stylesheet">
+<link href="../stylesheets/navbar.css" rel="stylesheet">
+<link href="../stylesheets/coupon.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script>
+		function startTime() {
+				var today = new Date();
+				var hr = today.getHours();
+				var min = today.getMinutes();
+				var sec = today.getSeconds();
+				ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+				hr = (hr == 0) ? 12 : hr;
+				hr = (hr > 12) ? hr - 12 : hr;
+				//Add a zero in front of numbers<10
+				hr = checkTime(hr);
+				min = checkTime(min);
+				sec = checkTime(sec);
+				document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
+
+				var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+				var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+				var curWeekDay = days[today.getDay()];
+				var curDay = today.getDate();
+				var curMonth = months[today.getMonth()];
+				var curYear = today.getFullYear();
+				var date = curWeekDay+","+curDay+""+curMonth;
+				document.getElementById("date").innerHTML = date;
+
+				var time = setTimeout(function(){ startTime() }, 500);
+		}
+		function checkTime(i) {
+				if (i < 10) {
+						i = "0" + i;
+				}
+				return i;
+		}
+////
+ // Remove menu for searching
+		</script>
+<style>
+body{
+  background-color: #cccccc !important;
+}
+
+
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+		width: 70%;
+		margin: auto;
+}
+</style>
+</head>
+
+<body onload="startTime()">
+<%- include navbar.ejs%>
+<div class="container">
+
+	<div class = "row" style = "border-bottom:0.5px solid #696969;margin-top:-18px; background-color:#ffffff;margin-left:-50px;margin-right:-120px;">
+		<div class = "col-2 page-title" >
+			<h1 style="margin-left:35px;">Coupons</h1>
+		</div>
+	</div>
+<div class="container-fluid" style="margin-top: 2%">
+	<div class="card-columns">
+	  <div class="card">
+	    <img class="card-img-top" src="../image/newpromo/coupon-cc.png" alt="Card image cap">
+	    <div class="card-body">
+	      <h5 class="card-title text-center">CC Can</h5>
+				<p class="card-text  text-right"><small class="text-muted">effective date: 15/4-1/5</small></p>
+	      </div>
+	  </div>
+	  <div class="card">
+	    <img class="card-img-top" src="../image/newpromo/coupon-na.png" alt="Card image cap">
+	    <div class="card-body">
+	      <h5 class="card-title text-center">NA Can</h5>
+	      <p class="card-text text-center">This card has supporting text below as a natural lead-in to additional content.</p>
+	      <p class="card-text text-right"><small class="text-muted">effective date: 5/4-1/5</small></p>
+	    </div>
+	  </div>
+	  <div class="card border-light">
+			<img class="card-img-top" src="../image/newpromo/coupon-med.png" alt="Card image cap">
+	    <div class="card-body">
+	      <h5 class="card-title text-center">Med Can</h5>
+	      <p class="card-text text-center">Get a free drink after making purchase.</p>
+	      <p class="card-text text-right"><small class="text-muted">expired date: 2/5</small></p>
+	  </div>
+	</div>
+	  <div class="card">
+	    <img class="card-img" src="../image/newpromo/coupon-shaw.png" alt="Card image">
+			<div class="card-body">
+	      <h5 class="card-title text-center">Shaw Can</h5>
+	      <p class="card-text ">Only effective with purchase of $40 or above.</p>
+	      <p class="card-text text-right"><small class="text-muted">effective date: 1/4-1/5</small></p>
+	  </div>
+	</div>
+	<div class="card">
+		<img class="card-img-top" src="../image/newpromo/coupon-shho.png" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title text-center">SHHO Can</h5>
+			<p class="card-text  text-right"><small class="text-muted">expired date: 25/4</small></p>
+			</div>
+	</div>
+	<div class="card">
+		<img class="card-img-top" src="../image/newpromo/coupon-ws.png" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title text-center">WS Can</h5>
+			<p class="card-text  text-right"><small class="text-muted">effective date: 1/4-1/5</small></p>
+			</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

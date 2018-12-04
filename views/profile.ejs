@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+<script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <link href="../stylesheets/navbar.css" rel="stylesheet">
+  <link href="../stylesheets/record.css" rel="stylesheet">
+  <link href="../stylesheets/profile.css" rel="stylesheet">
+  <link href="../stylesheets/modal.css" rel="stylesheet">
+</head>
+
+<body>
+  <%- include navbar.ejs %>
+<div class="container" style="margin-top:8%;margin-left:14%;">
+  <div class = "row" style = "border-bottom:0.5px solid #696969;margin-top:-47px; background-color:#ffffff;margin-left:-40px;margin-right:-120px;">
+    <div class = "col-4 page-title" >
+      <h1 style="margin-left:35px;">My Profile</h1>
+    </div>
+  </div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="personal-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="home" aria-selected="true" style="font-family: simpleprint;font-size:40px;">Personal Information</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="profile" aria-selected="false" style="font-family: simpleprint;font-size:40px;">Account Security</a>
+    </li>
+  </ul>
+  <div class="tab-content " id="myTabContent">
+    <div class="tab-pane fade show active" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+      <div class="container">
+      <div class="row">
+        <div class="col-sm">
+        <form method = "POST" action="/profile" id="resetAction">
+        </br>
+          <div class="input-group input-group-lg">
+
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg" style="font-family: simpleprint;font-size:2em;">First Name</span>
+  </div>
+  <input type="text" class="form-control" aria-label="First Name" name = "firstname0" aria-describedby="inputGroup-sizing-sm" style = "font-family: simpleprint;font-size:2em;"placeholder=<%= firstname%>>
+</div>
+</br>
+<div class="input-group input-group-lg">
+<div class="input-group-prepend">
+<span class="input-group-text" id="inputGroup-sizing-lg" style="font-family: simpleprint;font-size:2em;">Last Name</span>
+</div>
+<input type="text" class="form-control" aria-label="Last name" name = "lastname0" aria-describedby="inputGroup-sizing-sm"style = "font-family: simpleprint;font-size:2em; " placeholder=<%= lastname%>>
+</div>
+</br>
+<div class = "row">
+  <div class = "col-sm-3">
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01" style="font-family: simpleprint;font-size:2em;">Gender</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01" name="gender0" style = "font-family: simpleprint;font-size:2em;height:80px;">
+    <option><%= gender%></option>
+    <option value="M">M</option>
+    <option value="F">F</option>
+  </select>
+</div>
+  </div>
+  <div class = "col-sm-4">
+  </div>
+  <div class = "col-sm-5">
+    SID: &nbsp<%= sid%><br>
+  </div>
+</div>
+<div class = "row">
+  <div class = "col-3">
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01" style="font-family: simpleprint;font-size:2em;">College</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01" name="college0" style = "font-family: simpleprint;font-size:2em;height:80px;">
+                <option><%= college%></option>
+                <option value="CC">CC</option>
+                <option value="NA">NA</option>
+                <option value="UC">UC</option>
+                <option value="MS">MS</option>
+                <option value="SH">SH</option>
+                <option value="CW">CW</option>
+                <option value="YS">YS</option>
+                <option value="SC">SHAW</option>
+                <option value="WS">LWS</option>
+  </select>
+</div>
+  </div>
+  <div class = "col-4">
+  </div>
+  <div class = "col-5">
+    <div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg" style="font-family: simpleprint;font-size:40px;">Budget</span>
+    </div>
+    <input type="text" class="form-control" aria-label="budget" name = "budget0" aria-describedby="inputGroup-sizing-sm" placeholder=<%= budget%>>
+    </div>
+  </div>
+</div>
+<div class = "row">
+  <div class = "col-7">
+  </div>
+  <div class = "col-sm">
+    <button type="reset" class="btn btn-outline-dark" name = "reset" style = "height:60px;"style="font-family:GinraL ">Reset</button>
+    &nbsp&nbsp
+    <button type="submit" class="btn btn-outline-dark" style = "height:60px;"style="font-family:GinraL">Save and submit</button>
+  </div>
+</div>
+      	</div>
+      </div>
+    </div>
+      </div>
+    <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
+
+     <h1>Change Password</h1><hr>
+     <div class = "row">
+       <div class = "col-4">
+         <div class="input-group input-group-lg">
+         <div class="input-group-prepend">
+         <span class="input-group-text" id="inputGroup-sizing-lg" style="font-family: simpleprint;font-size:40px;">Old Password</span>
+         </div>
+         <input type="password" class="form-control" aria-label="Last name" name = "password0" aria-describedby="inputGroup-sizing-sm"style = "font-size:40px;">
+
+         </div>
+</div>
+</br>
+<div class = "col-4">
+  <p style = "font-size:20px;"></p><br>
+</div>
+</div>
+</br>
+<div class = "row">
+  <div class = "col-4">
+    <div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg" style="font-family: simpleprint;font-size:40px;">New Password</span>
+    </div>
+  </br>
+    <input type="password" class="form-control" aria-label="Last name" name = "password1" aria-describedby="inputGroup-sizing-sm" style = "font-size:40px;">
+  </div>
+</div>
+</div>
+</br>
+<div class = "row">
+  <div class = "col-4">
+    <div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg" style="font-family: simpleprint;font-size:40px;">Confirm Password</span>
+    </div>
+  </br>
+    <input type="password" class="form-control" aria-label="Last name" name = "password2" aria-describedby="inputGroup-sizing-sm" style = "font-size:40px;">
+  </div>
+</div>
+</div>
+</br>
+
+     <h1>Change Email</h1><hr>
+    <p style = "font-size: 30px;font-family: simpleprint;font-size:40px;">Email: <%= email %><p>
+      <div class = "row">
+        <div class = "col-4">
+          <div class="input-group input-group-lg">
+          <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg" style="font-family: simpleprint;font-size:40px;">New Email</span>
+          </div>
+          <input type="email" class="form-control" aria-label="Last name" name = "email1" aria-describedby="inputGroup-sizing-sm" style = "font-size:40px;">
+        </div>
+      </div>
+      </div>
+    </br>
+      <div class = "row">
+        <div class = "col-4">
+          <div class="input-group input-group-lg">
+          <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg" style="font-family: simpleprint;font-size:40px;">Confirm Email</span>
+          </div>
+          <input type="email" class="form-control" aria-label="Last name" name = "email2" aria-describedby="inputGroup-sizing-sm"style = "font-size:40px;">
+        </div>
+      </div>
+      </div>
+    </br>
+      <div class = "row">
+        <div class ="col-7">
+        </div>
+        <div class = "col-sm">
+          <button type="reset" class="btn btn-outline-dark" name = "reset" style = "height:60px;"style="font-family:GinraL">Reset</button>
+          &nbsp&nbsp
+          <button type="submit" class="btn btn-outline-dark" style = "height:60px;"style="font-family:GinraL">Save and submit</button>
+        </div>
+      </div>
+
+
+</form>
+
+
+
+
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+
+</html>

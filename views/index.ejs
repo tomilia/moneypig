@@ -1,22 +1,30 @@
+<!DOCTYPE html>
 <html>
     <head lang="en">
 	   <title>Money pig</title>
-
-	   <link href = "stylesheets/index.css" rel = "stylesheet" type ="text/css">
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+   <link rel="stylesheet" href="../js/jquery-ui-1.12.1/jquery-ui.css">
+   <script src="../js/jquery-ui-1.12.1/jquery-ui.js"></script>
+	   <link href = "../stylesheets/index.css" rel = "stylesheet" type ="text/css">
     </head>
 <body>
-
-  <form method = "POST" action = "/">
   <% if (message.length > 0) { %>
       <div class="alert alert-danger"><%= message %></div>
-  <% } %>
+  <% }else if(successfulMessage.length>0){ %>
+    <div class="alert alert-success"><%= successfulMessage %></div>
+    <%}%>
+  <form method = "POST" action = "/">
+
 <div class  = "allinhome">
     <div class ="registation">
-        <a href = "/registration">
-	       <img src = "image/sign.png" style = "width : 300px; height: 270px; border:0;">
+        <a href = "registration">
+	       <img src = "image/sign.png" style = "width : 300px; height: 270px; border:0;" class="sh">
         </a>
     </div>
-    <div class = "moneypointer"><img src ="image/point.png" width ="100" height = "100"></div>
+    <div class = "moneypointer"><img src ="image/point.png" class="blink" width ="100" height = "100"></div>
     <div class = "pig"><img src = "image/pig.png" width="440" height ="340" >
         <div class = "inputs">
             USER ID _
@@ -34,12 +42,38 @@
         <div class ="forgot_all">
         <div class = "forgot_but"><img src = "image/forgotpin.png" width = "10" height = "10"></div>
         <div class ="forgotdiv">
-            <a href = "forgot.php" style="text-decoration:none";>Forgot Password?</a>
+            <a href = "forgot" data-toggle="modal" data-target="#exampleModal" style="text-decoration:none;color:#726060">Forgot Password?</a>
         </div>
     </div>
     </div>
 </div>
 </form>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form method = "POST" action="/forgotpw" id="forgotAction">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter your email to get back the password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">@</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="pwf">
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Send</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

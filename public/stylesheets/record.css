@@ -1,0 +1,116 @@
+@font-face {
+		font-family: simpleprint;
+    src: url("../font/SimplePrint.ttf");
+}
+@font-face {
+     font-family: GinraL;
+     src: url("../font/GinraSansLight.otf");
+}
+@font-face {
+		 font-family: GinraSemi;
+		 src:url("../font/GinraSansSemiBold.otf");
+}
+@font-face {
+		font-family: MarketD;
+		src:url("../font/Market_Deco.ttf");
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+.drop-down-font {
+	font-family: MarketD;
+color:#2d2d2d;
+}
+.box-title{
+	font-family: MarketD;
+	font-size: 36px;
+	color: #62a6dd;
+}
+.box-title-head{
+	font-family:GinraL;
+	font-size: 1vm;
+	color:#2d2d2d;
+}
+.page-title{
+  font-family: GinraL;
+  font-size: 38px;
+  line-height: 60%;
+}
+.row-font {
+  font-family: simpleprint;
+	font-size: 36px;
+	line-height: 80%;
+}
+.clock-font {
+	font-size: 25px;
+	line-height: 0.5cm;
+}
+.col-font {
+	font-family: simpleprint;
+	font-size: 2vw;
+	line-height: 80%
+}
+.used-font {
+	color:#ccc;
+	text-align:center;
+}
+#changebackground{
+  background-color: #454a54;
+}
+.pull-right
+{
+  padding-right:15px;padding-left:0;border-right:5px solid #eee;
+  border-left:0;text-align:right
+}
+body{
+  background-color:#fff;
+}
+
+.try{
+  font-size: 25px;
+}
+
+
+
+.try2{
+  margin-left: 150px;
+  max-width: 92%;
+}
+.content-main{
+	margin-top: 5%;
+}
+#shadow{
+      margin-left: 200px;
+  box-shadow: 0 10px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+#shadow:hover{
+    box-shadow: 0 15px 14px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.data{
+	margin-left: 200px;
+	overflow-y: :auto;
+}
